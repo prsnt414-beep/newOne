@@ -1,0 +1,157 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background: linear-gradient(135deg, #ffc9e3 0%, #ff6b9d 25%, #ff1744 50%, #ff6b9d 75%, #ffc9e3 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+  }
+}
+
+.hearts-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hearts-background::before,
+.hearts-background::after {
+  content: "❤️ 💕 💖 💗 💝 💓 ❤️ 💕 💖 💗 💝 💓";
+  position: absolute;
+  font-size: 2rem;
+  opacity: 0.1;
+  white-space: nowrap;
+  animation: floatHearts 30s linear infinite;
+}
+
+.hearts-background::before {
+  top: 10%;
+  animation-duration: 25s;
+}
+
+.hearts-background::after {
+  top: 60%;
+  animation-duration: 35s;
+  animation-delay: -10s;
+}
+
+.valentine-box {
+  position: relative;
+  z-index: 10;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes floatHearts {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  25% { transform: scale(1.2); }
+  50% { transform: scale(1); }
+}
+
+@keyframes heartbeat-delayed {
+  0%, 100% { transform: scale(1); }
+  25% { transform: scale(1.3); }
+  50% { transform: scale(1); }
+}
+
+@keyframes scaleIn {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(-20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes heartsFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-heartbeat {
+  animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+.animate-heartbeat-delayed {
+  animation: heartbeat-delayed 1.5s ease-in-out infinite;
+}
+
+.animate-bounce-delayed {
+  animation: bounce 1s infinite;
+  animation-delay: 0.2s;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.5s ease-out;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+.animate-fade-in-delayed {
+  animation: fadeIn 0.8s ease-out 0.2s both;
+}
+
+.animate-fade-in-slow {
+  animation: fadeIn 1s ease-out 0.4s both;
+}
+
+.animate-hearts-float {
+  animation: heartsFloat 2s ease-in-out infinite;
+}
+
+.yes-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.yes-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.yes-button:hover::before {
+  width: 300px;
+  height: 300px;
+}
